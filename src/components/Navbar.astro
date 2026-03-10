@@ -1,0 +1,166 @@
+---
+import { Sun, Moon, Menu, X } from "@lucide/astro";
+
+const navLinks = [
+  { name: "Features", href: "#features" },
+  { name: "Pricing", href: "#pricing" },
+  //   { name: "Docs", href: "/docs" },
+  //   { name: "About", href: "/about" },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="text-xl font-bold tracking-tight flex items-center gap-2"
+    >
+      <div
+        class="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center text-white"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M22 2L2 22"></path>
+          <path d="M2 2l20 20"></path>
+        </svg>
+      </div>
+      <span>AtSubmit</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+
+      <div class="h-4 w-px bg-border mx-2"></div>
+
+      <!-- Theme toggle -->
+      <button
+        id="theme-toggle"
+        class="p-2 rounded-full hover:bg-muted transition-colors"
+        aria-label="Toggle theme"
+      >
+        <Moon id="theme-icon-dark" size={18} class="hidden" />
+        <Sun id="theme-icon-light" size={18} />
+      </button>
+
+      <!-- <a
+        href="/login"
+        class="text-sm font-medium hover:text-apple-blue transition-colors"
+      >
+        Log in
+      </a> -->
+
+      <!-- <a href="/signup" class="btn-primary py-2 px-4 text-sm"> Get Started </a> -->
+    </div>
+
+    <!-- Mobile toggle -->
+    <div class="flex md:hidden items-center gap-4">
+      <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-muted">
+        <Moon id="theme-icon-dark-mobile" size={18} class="hidden" />
+        <Sun id="theme-icon-light-mobile" size={18} />
+      </button>
+
+      <button id="menu-toggle" class="p-2 rounded-full hover:bg-muted">
+        <Menu id="menu-open" size={24} />
+        <X id="menu-close" size={24} class="hidden" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300"
+  >
+    {
+      navLinks.map((link) => (
+        <a href={link.href} class="text-lg font-medium mobile-link">
+          {link.name}
+        </a>
+      ))
+    }
+
+    <hr class="border-border" />
+
+    <!-- <a href="/login" class="text-lg font-medium mobile-link"> Log in </a> -->
+
+    <!-- <a href="/signup" class="btn-primary text-center mobile-link">
+      Get Started
+    </a> -->
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const openIcon = document.getElementById("menu-open");
+  const closeIcon = document.getElementById("menu-close");
+
+  menuBtn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+    openIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+  });
+
+  document.querySelectorAll(".mobile-link").forEach((el) => {
+    el.addEventListener("click", () => {
+      menu?.classList.add("hidden");
+      openIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    });
+  });
+
+  const toggleButtons = [
+    document.getElementById("theme-toggle"),
+    document.getElementById("theme-toggle-mobile"),
+  ];
+
+  const html = document.documentElement;
+
+  function updateIcons() {
+    const isDark = html.classList.contains("dark");
+
+    document
+      .querySelectorAll("#theme-icon-dark,#theme-icon-dark-mobile")
+      .forEach((el) => el.classList.toggle("hidden", !isDark));
+
+    document
+      .querySelectorAll("#theme-icon-light,#theme-icon-light-mobile")
+      .forEach((el) => el.classList.toggle("hidden", isDark));
+  }
+
+  toggleButtons.forEach((btn) => {
+    btn?.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        html.classList.contains("dark") ? "dark" : "light",
+      );
+      updateIcons();
+    });
+  });
+
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+  }
+
+  updateIcons();
+</script>

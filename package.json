@@ -10,6 +10,15 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
-    "astro": "^5.17.1"
+    "@astrojs/mdx": "^4.3.13",
+    "@lucide/astro": "^0.577.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.17.1",
+    "remark-smartypants": "^3.0.2",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "remark-gfm": "^4.0.1",
+    "sass-embedded": "^1.97.3"
   }
 }

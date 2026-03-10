@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import DocumentLayout from "../../layouts/DocumentLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const docs = await getCollection("legal");
+  return docs.map((post) => {
+    return {
+      params: { slug: post.id },
+      props: post,
+    };
+  });
+}
+
+type Props = CollectionEntry<"legal">;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<DocumentLayout title="Terms of Service">
+  <Content />
+</DocumentLayout>

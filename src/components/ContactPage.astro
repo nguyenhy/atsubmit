@@ -1,0 +1,132 @@
+---
+import { Mail, MapPin, Clock, Send } from "@lucide/astro";
+---
+
+<div class="section-padding pt-32 container-wide">
+  <div class="grid lg:grid-cols-2 gap-16">
+    <!-- Contact Info -->
+    <div>
+      <h1 class="text-4xl font-bold mb-6">Get in touch</h1>
+
+      <p class="text-lg text-muted-foreground mb-12">
+        Have questions about AtSubmit? Our team is here to help you get started
+        or answer any technical queries.
+      </p>
+
+      <div class="space-y-8">
+        <!-- Email -->
+        <div class="flex items-start gap-4">
+          <div
+            class="w-12 h-12 rounded-lg bg-apple-blue/10 text-apple-blue flex items-center justify-center shrink-0"
+          >
+            <Mail size={24} />
+          </div>
+
+          <div>
+            <h3 class="font-bold mb-1">Email Support</h3>
+
+            <p class="text-muted-foreground">support@atsubmit.com</p>
+
+            <p class="text-sm text-muted-foreground mt-1">
+              We typically respond within 2-4 hours.
+            </p>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="flex items-start gap-4">
+          <div
+            class="w-12 h-12 rounded-lg bg-apple-blue/10 text-apple-blue flex items-center justify-center shrink-0"
+          >
+            <MapPin size={24} />
+          </div>
+
+          <div>
+            <h3 class="font-bold mb-1">Business Address</h3>
+
+            <p class="text-muted-foreground">
+              123 Developer Lane, Suite 400<br />
+              San Francisco, CA 94103
+            </p>
+          </div>
+        </div>
+
+        <!-- Hours -->
+        <div class="flex items-start gap-4">
+          <div
+            class="w-12 h-12 rounded-lg bg-apple-blue/10 text-apple-blue flex items-center justify-center shrink-0"
+          >
+            <Clock size={24} />
+          </div>
+
+          <div>
+            <h3 class="font-bold mb-1">Support Hours</h3>
+
+            <p class="text-muted-foreground">
+              Monday — Friday<br />
+              9:00 AM — 6:00 PM PST
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="bg-card border border-border rounded-apple-lg p-8 shadow-sm">
+      <form class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label class="text-sm font-medium"> Full Name </label>
+
+            <input
+              type="text"
+              placeholder="John Doe"
+              class="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-apple-blue/50"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium"> Email Address </label>
+
+            <input
+              type="email"
+              placeholder="john@example.com"
+              class="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-apple-blue/50"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-sm font-medium"> Subject </label>
+
+          <select
+            class="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-apple-blue/50"
+          >
+            <option>General Inquiry</option>
+            <option>Technical Support</option>
+            <option>Billing Question</option>
+            <option>Partnership</option>
+          </select>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-sm font-medium"> Message </label>
+
+          <textarea
+            rows="5"
+            placeholder="How can we help?"
+            class="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-apple-blue/50"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-primary w-full flex items-center justify-center gap-2"
+        >
+          Send Message
+          <Send size={18} />
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

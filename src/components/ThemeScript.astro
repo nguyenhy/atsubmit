@@ -1,0 +1,30 @@
+---
+
+---
+
+<script is:inline>
+  const storedTheme = localStorage.getItem("theme");
+
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const theme = storedTheme ? storedTheme : prefersDark ? "dark" : "light";
+
+  const root = document.documentElement;
+
+  root.classList.remove("light", "dark");
+  root.classList.add(theme);
+
+  localStorage.setItem("theme", theme);
+
+  window.toggleTheme = function () {
+    const current = root.classList.contains("dark") ? "dark" : "light";
+    const next = current === "dark" ? "light" : "dark";
+
+    root.classList.remove("light", "dark");
+    root.classList.add(next);
+
+    localStorage.setItem("theme", next);
+  };
+</script>
