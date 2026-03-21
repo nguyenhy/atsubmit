@@ -3,8 +3,6 @@ import { defineConfig } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
 
-import tailwindcss from "@tailwindcss/vite";
-
 import mdx from "@astrojs/mdx";
 import legacy from "@vitejs/plugin-legacy";
 
@@ -15,10 +13,7 @@ export default defineConfig({
   }),
 
   vite: {
-    plugins: [
-      legacy(),
-      tailwindcss(),
-    ],
+    plugins: [legacy()],
     build: {
       minify: "esbuild",
     },

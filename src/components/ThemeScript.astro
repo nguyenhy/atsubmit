@@ -16,8 +16,6 @@
   root.classList.remove("light", "dark");
   root.classList.add(theme);
 
-  localStorage.setItem("theme", theme);
-
   window.toggleTheme = function () {
     const current = root.classList.contains("dark") ? "dark" : "light";
     const next = current === "dark" ? "light" : "dark";

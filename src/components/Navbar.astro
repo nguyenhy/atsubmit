@@ -4,21 +4,14 @@ import { Sun, Moon, Menu, X } from "@lucide/astro";
 const navLinks = [
   { name: "Features", href: "#features" },
   { name: "Pricing", href: "#pricing" },
-  //   { name: "Docs", href: "/docs" },
-  //   { name: "About", href: "/about" },
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50">
+<nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
     <!-- Logo -->
-    <a
-      href="/"
-      class="text-xl font-bold tracking-tight flex items-center gap-2"
-    >
-      <div
-        class="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center text-white"
-      >
+    <a href="/" class="text-xl font-bold tracking-tight flex items-center gap-2">
+      <div class="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center text-white">
         <svg
           width="20"
           height="20"
@@ -42,7 +35,7 @@ const navLinks = [
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
           >
             {link.name}
           </a>
@@ -54,21 +47,12 @@ const navLinks = [
       <!-- Theme toggle -->
       <button
         id="theme-toggle"
-        class="p-2 rounded-full hover:bg-muted transition-colors"
+        class="p-2 rounded-full hover:bg-muted transition-colors duration-200"
         aria-label="Toggle theme"
       >
         <Moon id="theme-icon-dark" size={18} class="hidden" />
         <Sun id="theme-icon-light" size={18} />
       </button>
-
-      <!-- <a
-        href="/login"
-        class="text-sm font-medium hover:text-apple-blue transition-colors"
-      >
-        Log in
-      </a> -->
-
-      <!-- <a href="/signup" class="btn-primary py-2 px-4 text-sm"> Get Started </a> -->
     </div>
 
     <!-- Mobile toggle -->
@@ -88,7 +72,7 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300"
+    class="hidden md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-4 transition-all duration-300"
   >
     {
       navLinks.map((link) => (
@@ -99,12 +83,6 @@ const navLinks = [
     }
 
     <hr class="border-border" />
-
-    <!-- <a href="/login" class="text-lg font-medium mobile-link"> Log in </a> -->
-
-    <!-- <a href="/signup" class="btn-primary text-center mobile-link">
-      Get Started
-    </a> -->
   </div>
 </nav>
 
@@ -152,7 +130,7 @@ const navLinks = [
       html.classList.toggle("dark");
       localStorage.setItem(
         "theme",
-        html.classList.contains("dark") ? "dark" : "light",
+        html.classList.contains("dark") ? "dark" : "light"
       );
       updateIcons();
     });

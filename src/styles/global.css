@@ -1,79 +1,83 @@
-@import "tailwindcss";
+@import "./tailwind.css";
 
-@theme {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 255 255 255;
+  --foreground: 29 29 31;
+  --muted: 245 245 247;
+  --muted-foreground: 134 134 139;
+  --border: 210 210 215;
+  --accent: 0 122 255;
+  --card: 255 255 255;
+  --card-foreground: 29 29 31;
+}
+
+.dark {
+  --background: 0 0 0;
+  --foreground: 245 245 247;
+  --muted: 29 29 31;
+  --muted-foreground: 134 134 139;
+  --border: 66 66 69;
+  --accent: 10 132 255;
+  --card: 29 29 31;
+  --card-foreground: 245 245 247;
+}
+
+:root {
   --font-sans: "SF Pro Display", "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
 
   --color-apple-blue: #007aff;
   --color-apple-gray: #8e8e93;
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-border: rgb(var(--border));
+  --color-accent: rgb(var(--accent));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
 
   --radius-apple: 12px;
   --radius-apple-lg: 20px;
 }
 
-@layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #1d1d1f;
-    --muted: #f5f5f7;
-    --muted-foreground: #86868b;
-    --border: #d2d2d7;
-    --accent: #007aff;
-    --card: #ffffff;
-    --card-foreground: #1d1d1f;
-  }
-
-  .dark {
-    --background: #000000;
-    --foreground: #f5f5f7;
-    --muted: #1d1d1f;
-    --muted-foreground: #86868b;
-    --border: #424245;
-    --accent: #0a84ff;
-    --card: #1d1d1f;
-    --card-foreground: #f5f5f7;
-  }
-
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
-  }
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--color-font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-@layer components {
-  .glass {
-    @apply backdrop-blur-md bg-white/70 dark:bg-black/70 border border-white/20 dark:border-white/10;
-  }
+/* Components (no @apply to avoid layer dependency issues) */
 
-  .btn-primary {
-    @apply px-6 py-3 rounded-full bg-apple-blue text-white font-medium hover:opacity-90 transition-all active:scale-95;
-  }
+.glass {
+  @apply backdrop-blur-md;
+  @apply bg-white/20 dark:bg-black/70;
+  @apply border border-white/20 dark:border-white/10;
+}
 
-  .btn-secondary {
-    @apply px-6 py-3 rounded-full bg-muted text-foreground font-medium hover:opacity-80 transition-all active:scale-95 border border-border;
-  }
+.btn-primary {
+  @apply px-6 py-3 rounded-full bg-apple-blue text-white font-medium hover:opacity-90 transition-all active:scale-95;
+}
 
-  .section-padding {
-    @apply py-20 px-6 md:px-12 lg:px-24;
-  }
+.btn-secondary {
+  @apply px-6 py-3 rounded-full bg-muted text-foreground font-medium hover:opacity-80 transition-all active:scale-95 border border-border;
+}
 
-  .container-wide {
-    @apply max-w-7xl mx-auto;
-  }
+.section-padding {
+  @apply py-20 px-6 md:px-12 lg:px-24;
+}
+
+.container-wide {
+  @apply max-w-7xl mx-auto;
 }
 
 /* Smooth transitions for theme switching */
