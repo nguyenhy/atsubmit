@@ -1,0 +1,13 @@
+---
+import GA4 from "./code.mjs?raw";
+
+interface Props {
+  code: string;
+}
+const url = `https:/www.googletagmanager.com/gtag/js?id=${Astro.props.code}`;
+const code = GA4.replace(/{{ID}}/, Astro.props.code || "");
+// G-21W6M0HZLY
+---
+
+<script async src={url}></script>
+<script is:inline set:html={code} />

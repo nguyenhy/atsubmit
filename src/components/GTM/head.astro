@@ -1,0 +1,10 @@
+---
+import GTM from "./head.mjs?raw";
+
+interface Props {
+  code: string;
+}
+const code = GTM.replace(/{{ID}}/, Astro.props.code || '');
+---
+
+<script is:inline set:html={code} />

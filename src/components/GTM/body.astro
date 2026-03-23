@@ -1,0 +1,11 @@
+---
+interface Props {
+  code: string;
+}
+const url = `https://www.googletagmanager.com/ns.html?id=${Astro.props.code}`;
+---
+
+<noscript>
+  <iframe src={url} height="0" width="0" style="display:none;visibility:hidden"
+  ></iframe>
+</noscript>
