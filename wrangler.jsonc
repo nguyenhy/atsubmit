@@ -11,6 +11,13 @@
 		"directory": "./dist"
 	},
 	"observability": {
-    "enabled": true
-  }
+		"enabled": true
+	},
+	"routes": [
+		{
+			"pattern": "atsubmit.com",
+			"zone_name": "atsubmit.com",
+			"custom_domain": true
+		}
+	]
 }
