@@ -1,6 +1,6 @@
 ---
 import { Sun, Moon, Menu, X } from "@lucide/astro";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo-rectangle-bg.svg";
 
 const navLinks = [
   { name: "Features", href: "#features" },
@@ -13,13 +13,9 @@ const navLinks = [
     <!-- Logo -->
     <a
       href="/"
-      class="text-xl font-bold tracking-tight flex items-center gap-2"
+      class="text-xl font-bold tracking-tight flex items-center gap-1"
     >
-      <div
-        class="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center text-white"
-      >
-        <Logo />
-      </div>
+      <Logo class="w-8 h-8" />
       <span>submit</span>
     </a>
 
